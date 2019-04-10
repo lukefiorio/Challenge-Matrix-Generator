@@ -1,31 +1,24 @@
 function matrixGenerator(rows, columns) {
   // do work here
+  function numericSort(a, b) {
+    return a - b;
+  }
+
   let outerArr = [];
-  let outerFirstInnerArr = [];
   for (let i = 0; i < rows; i++) {
     let innerArr = [];
 
     for (let j = 0; j < columns; j++) {
-      let nextVal = Math.floor(Math.random() * 101);
-      let index = 0;
-      // insertion sort
-      if (innerArr.length > 0) {
-        while (nextVal > innerArr[index]) {
-          index++;
-        }
-      }
-      innerArr.splice(index, 0, nextVal);
+      let nextVal = Math.floor(Math.random() * 100) + 1;
+      innerArr.push(nextVal);
     }
-    let nextFirstInner = innerArr[0];
-    let nextIndex = 0;
-    if (outerFirstInnerArr.length > 0) {
-      while (nextFirstInner > outerFirstInnerArr[nextIndex]) {
-        nextIndex++;
-      }
-    }
-    outerFirstInnerArr.splice(nextIndex, 0, nextFirstInner);
-    outerArr.splice(nextIndex, 0, innerArr);
+    innerArr.sort(numericSort);
+    outerArr.push(innerArr);
   }
+
+  outerArr.sort(function (a, b) {
+    return a[0] - b[0];
+  })
 
   return outerArr;
 }
