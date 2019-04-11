@@ -12,13 +12,14 @@ function matrixGenerator(rows, columns) {
       let nextVal = Math.floor(Math.random() * 100) + 1;
       innerArr.push(nextVal);
     }
+
     innerArr.sort(numericSort);
     outerArr.push(innerArr);
   }
 
-  outerArr.sort(function (a, b) {
+  outerArr.sort(function(a, b) {
     return a[0] - b[0];
-  })
+  });
 
   return outerArr;
 }
